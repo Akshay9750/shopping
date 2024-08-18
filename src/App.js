@@ -15,6 +15,7 @@ import { CartProvider } from "./context/CartContext";
 import { AuthProvider, AuthContext } from "./context/AuthContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Footer from "./components/Footer";
 
 // PrivateRoute Component to protect routes
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -36,10 +37,14 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route path="/products" element={<ProductListPage />} />
               <Route path="/product/:id" element={<ProductDetailPage />} />
-              <Route path="/cart" element={<PrivateRoute component={CartPage} />} />
+              <Route
+                path="/cart"
+                element={<PrivateRoute component={CartPage} />}
+              />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
+            <Footer />
           </div>
         </Router>
       </CartProvider>

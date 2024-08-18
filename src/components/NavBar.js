@@ -9,32 +9,49 @@ const NavBar = () => {
   const cartItemLength = cartItems.length;
 
   return (
-    <nav className="flex justify-between bg-purple-600 h-16">
-      <Link className="pl-48 text-4xl pt-3" to="/">
+    <nav className="bg-purple-400 text-white flex justify-between items-center h-16 px-4 md:px-8 shadow-md">
+      <Link className="text-2xl md:text-3xl font-bold" to="/">
         MyStore
       </Link>
-      <div className="flex p-3">
-        <Link className="text-4xl pl-4" to="/">
+      <div className="flex items-center space-x-4 md:space-x-6">
+        <Link
+          className="text-lg md:text-xl hover:text-gray-200 transition-colors"
+          to="/"
+        >
           Home
         </Link>
-        <Link className="text-4xl pl-4" to="/products">
+        <Link
+          className="text-lg md:text-xl hover:text-gray-200 transition-colors"
+          to="/products"
+        >
           Products
         </Link>
-        <Link className="text-4xl pl-4" to="/cart">
-          Cart {cartItemLength > 0 ? <span> ({cartItemLength})</span> : null}
+        <Link
+          className="text-lg md:text-xl hover:text-gray-200 transition-colors"
+          to="/cart"
+        >
+          Cart{" "}
+          {cartItemLength > 0 ? (
+            <span className="bg-orange-200 text-white rounded-full px-2">
+              {cartItemLength}
+            </span>
+          ) : null}
         </Link>
         {user ? (
-          <div className="flex items-center pl-4">
-            <span className="text-4xl">Welcome, {user.name}!</span>
+          <div className="flex items-center space-x-4">
+            <span className="text-lg md:text-xl">Welcome, {user.name}!</span>
             <button
-              className="ml-4 text-4xl bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded"
+              className="bg-red-500 hover:bg-red-700 text-white py-1 px-3 rounded transition-colors"
               onClick={logout}
             >
               Logout
             </button>
           </div>
         ) : (
-          <Link className="text-4xl pl-4" to="/login">
+          <Link
+            className="text-lg md:text-xl hover:text-gray-200 transition-colors"
+            to="/login"
+          >
             Login
           </Link>
         )}
